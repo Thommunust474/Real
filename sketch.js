@@ -1,31 +1,38 @@
-// setup - run once when the code is first starts
-function setup() {
-  createCanvas(200, 200); // this sets the size of the area in which we can draw things
-  background(170);
+//your parameter variables go here!
+var headW = 83; // link to head width
+var headH = 99; // link to head height
+var snoutY = headY - 8; // link to snout location Y
+var snoutW = headW - 48; // link to snout width
+var snoutH = headH - 41; // link to snout height
+
+// Calculate original nostril positions
+var leftNostrilX = headX - snoutW / 3;
+var rightNostrilX = headX + snoutW / 3;
+var nostrilY = snoutY + snoutH / 6;
+
+// Calculate nostril size based on snout dimensions
+var nostrilW = snoutW / 4;
+var nostrilH = snoutH / 8;
+
+var eyeY = headY - 15;
+
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(DEVELOP_GLYPH);
+  pWallpaper.resolution(FIT_TO_SCREEN);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 50;
 }
 
-// draw - this function loops, the code within read through repeatedly while running
-function draw() {
-  DrawCapybaraHead(100, 100);
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
 }
 
-function DrawCapybaraHead(headX, headY) {
-  let headW = 83; // link to head width
-  let headH = 99; // link to head height
-  let snoutY = headY - 8; // link to snout location Y
-  let snoutW = headW - 48; // link to snout width
-  let snoutH = headH - 41; // link to snout height
-
-  // Calculate original nostril positions
-  let leftNostrilX = headX - snoutW / 3;
-  let rightNostrilX = headX + snoutW / 3;
-  let nostrilY = snoutY + snoutH / 6;
-
-  // Calculate nostril size based on snout dimensions
-  let nostrilW = snoutW / 4;
-  let nostrilH = snoutH / 8;
-
-  let eyeY = headY - 15;
+function my_symbol(headX, headY) { // do not rename this function. Treat this similarly to a Draw function
 
   // Draw ears
   fill(128, 100, 100);
